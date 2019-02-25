@@ -4,16 +4,28 @@ write down the Facts and Rules to model the game state
 shown as the follows:
 
  y\\x   pos1     pos2     pos3
-     ----------------------------
-pos1 | tile5  | tile4  | empty  |
-     ----------------------------
-pos2 | tile6  | tile1  | tile8  |
-     ----------------------------
-pos3 | tile7  | tile3  | tile2  |
-     ----------------------------
+     ┌────────┬────────┬────────┐
+pos1 │ tile5  │ tile4  │ empty  │
+     ├────────┼────────┼────────┤
+pos2 │ tile6  │ tile1  │ tile8  │
+     ├────────┼────────┼────────┤
+pos3 │ tile7  │ tile3  │ tile2  │
+     └────────┴────────┴────────┘
 
 Example: 
 fact: (pred obj1 obj2)
 rule: ((pred obj1 obj2) (pred obj2 obj3)) -> (pred obj1 obj3)
 
 """
+fact: (movable tile4 pos2 pos1 pos3 pos1)
+fact: (movable tile8 pos3 pos2 pos3 pos1)
+
+fact: (posxy tile1 pos2 pos2)
+fact: (posxy tile2 pos3 pos3)
+fact: (posxy tile3 pos2 pos3)
+fact: (posxy tile4 pos2 pos1)
+fact: (posxy tile5 pos1 pos1)
+fact: (posxy tile6 pos1 pos2)
+fact: (posxy tile7 pos1 pos3)
+fact: (posxy tile8 pos3 pos2)
+fact: (posxy empty pos3 pos1)
